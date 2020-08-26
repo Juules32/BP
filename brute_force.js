@@ -1,6 +1,6 @@
 var password = 0
 
-function hello () {
+function login () {
     password = document.getElementById("password").value
     console.log(password)
 }
