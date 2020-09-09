@@ -1,8 +1,9 @@
-var charSet = "abcdefg"
+var charSet = "abc"
 
-minimum_length = 6
-maximum_length = 10
+minimum_length = 2
+maximum_length = 6
 var password = ""
+var password_length = 0
 function generate_password () {
    
     password_length = 2
@@ -16,13 +17,38 @@ function generate_password () {
     }
 }
 
-generate_password()
-console.log(password)
+//generate_password()
+password = "bbbbac"
+wrong_passwords = []
+guess = ""
+combinations = 0
 
-
-function solve_password(password) {
-    
+function solve_password() {
+    for (let i = minimum_length; i <= maximum_length; i++) {
+        combinations = 0
+        guess = "lmao"
+        while (!wrong_passwords.includes(guess)) {
+            guess = ""
+            combinations += 1
+            for (let j = 0; j < i; j++) {
+                guess += charSet.charAt(Math.random() * charSet.length).toString()
+            }
+            console.log(guess)
+            if(guess == password) {
+                console.log("The password is: " + guess)
+                return
+            }
+            else {
+                wrong_passwords.concat(guess)
+            }
+            if (combinations >= charSet.length ** i) {
+                break
+            }
+        }
+    }
 }
+
+solve_password()
 
 function loop () {
     
