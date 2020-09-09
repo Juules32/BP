@@ -1,23 +1,55 @@
-var charSet = ["a", "b", "c"]
-answer = ""
-temp = ""
-console.log(answer)
+var charSet = "abcdefg"
 
-function login () {
+minimum_length = 6
+maximum_length = 10
+var password = ""
+function generate_password () {
+   
+    password_length = 2
+    while (password_length < minimum_length) {
+        password_length = Math.floor(Math.random() * (maximum_length + 1));
+    }
+    console.log(password_length)
+    console.log(password.length)
+    while (password.length < password_length) {
+        password+= charSet.charAt(Math.random() * charSet.length).toString()
+    }
+}
+
+generate_password()
+console.log(password)
+
+
+function solve_password(password) {
     
-    let password = document.getElementById("password").value
+}
+
+function loop () {
+    
+}
+function login1 () {
+}
+function login2 () {
+    let t0 = Date.now()
+    //let password = document.getElementById("password").value
+    let password = "c"
     for (let j = 1; j <= 8; j++) {
         for (let i = 0; i <= charSet.length ** j; i++) {
-            answer = charSet[i]
-            if (i == charSet.length ** j) {
-                temp.concat(temp, )
+            for (let k = 0; k < charSet.length; k++) {
+                answer = answer.concat(answer, charSet[i])
+
             }
+            
+            
             if (answer != password) {
+                console.log(answer)
+                answer = answer.substring(0, answer.length - 1);
                 continue
             }
             else {
-                console.log("Cracked!")
-                console.log(temp)
+                let t1 = Date.now()
+                console.log("Cracked in " + (t1-t0) + " milliseconds")
+                answer = ""
                 return
             }
         }
