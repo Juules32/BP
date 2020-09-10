@@ -1,24 +1,24 @@
-var charSet = "abc"
+var charSet = "abcd"
 
-minimum_length = 2
-maximum_length = 6
+minimum_length = 6
+maximum_length = 8
 var password = ""
 var password_length = 0
 function generate_password () {
-   
-    password_length = 2
+    pass = ""
+    password_length = Math.floor(Math.random() * (maximum_length + 1));
     while (password_length < minimum_length) {
         password_length = Math.floor(Math.random() * (maximum_length + 1));
     }
-    console.log(password_length)
-    console.log(password.length)
-    while (password.length < password_length) {
-        password+= charSet.charAt(Math.random() * charSet.length).toString()
+    
+    while (pass.length < password_length) {
+        pass+= charSet.charAt(Math.random() * charSet.length).toString()
     }
+    return pass
 }
 
-//generate_password()
-password = "bbbbac"
+password = generate_password()
+
 wrong_passwords = []
 guess = ""
 combinations = 0
@@ -27,19 +27,19 @@ function solve_password() {
     for (let i = minimum_length; i <= maximum_length; i++) {
         combinations = 0
         guess = "lmao"
-        while (!wrong_passwords.includes(guess)) {
+        while (true) {
             guess = ""
-            combinations += 1
             for (let j = 0; j < i; j++) {
                 guess += charSet.charAt(Math.random() * charSet.length).toString()
             }
-            console.log(guess)
             if(guess == password) {
                 console.log("The password is: " + guess)
                 return
             }
-            else {
-                wrong_passwords.concat(guess)
+            if(wrong_passwords.includes(guess) == false) {
+                console.log(guess)
+                combinations += 1
+                wrong_passwords.push(guess)
             }
             if (combinations >= charSet.length ** i) {
                 break
@@ -47,8 +47,9 @@ function solve_password() {
         }
     }
 }
-
+//console.log(calculate_possibilities(charSet.length, 7))
 solve_password()
+//VIRKER IKKE ALTID. ÆNDR L. 30
 
 function loop () {
     
