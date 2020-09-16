@@ -1,7 +1,7 @@
-var charSet = "abcd"
+var charSet = "abcde"
 
-minimum_length = 6
-maximum_length = 8
+minimum_length = 2
+maximum_length = 3
 var password = ""
 var password_length = 0
 function generate_password () {
@@ -24,9 +24,10 @@ guess = ""
 combinations = 0
 
 function solve_password() {
+    let password = document.getElementById("password").value
+
     for (let i = minimum_length; i <= maximum_length; i++) {
         combinations = 0
-        guess = "lmao"
         while (true) {
             guess = ""
             for (let j = 0; j < i; j++) {
@@ -38,6 +39,8 @@ function solve_password() {
             }
             if(wrong_passwords.includes(guess) == false) {
                 console.log(guess)
+                document.write(guess)
+                
                 combinations += 1
                 wrong_passwords.push(guess)
             }
@@ -47,9 +50,6 @@ function solve_password() {
         }
     }
 }
-//console.log(calculate_possibilities(charSet.length, 7))
-solve_password()
-//VIRKER IKKE ALTID. ÆNDR L. 30
 
 function loop () {
     
@@ -58,7 +58,6 @@ function login1 () {
 }
 function login2 () {
     let t0 = Date.now()
-    //let password = document.getElementById("password").value
     let password = "c"
     for (let j = 1; j <= 8; j++) {
         for (let i = 0; i <= charSet.length ** j; i++) {
