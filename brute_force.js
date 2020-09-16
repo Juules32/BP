@@ -1,7 +1,7 @@
 var charSet = "abcde"
 
 minimum_length = 2
-maximum_length = 3
+maximum_length = 7
 var password = ""
 var password_length = 0
 function generate_password () {
@@ -19,11 +19,12 @@ function generate_password () {
 
 password = generate_password()
 
-wrong_passwords = []
-guess = ""
-combinations = 0
 
 function solve_password() {
+    let combinations = 0
+    let guess = ""
+    let wrong_passwords = []
+    let t0 = Date.now()
     let password = document.getElementById("password").value
 
     for (let i = minimum_length; i <= maximum_length; i++) {
@@ -34,13 +35,12 @@ function solve_password() {
                 guess += charSet.charAt(Math.random() * charSet.length).toString()
             }
             if(guess == password) {
+                let t1 = Date.now()
+                document.getElementById("visual_answer").innerHTML = "The password is: " + guess + ", took " + wrong_passwords.length + " tries and was solved in " + (t1-t0) + " milliseconds"
                 console.log("The password is: " + guess)
                 return
             }
             if(wrong_passwords.includes(guess) == false) {
-                console.log(guess)
-                document.write(guess)
-                
                 combinations += 1
                 wrong_passwords.push(guess)
             }
