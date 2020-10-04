@@ -52,7 +52,6 @@ function generate_password () {
 }
 
 password = generate_password()
-
 function solve_password() {
     let combinations = 0
     let guess = ""
