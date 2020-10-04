@@ -85,7 +85,7 @@ function solve_password() {
             }
             if(guess == password) {
                 let t1 = Date.now()
-                document.getElementById("visual_answer").innerHTML = "The password is: " + guess + ", took " + wrong_passwords.length + " tries and was solved in " + (t1-t0) + " milliseconds"
+                document.getElementById("visual_answer").innerHTML = "Dit password er: " + guess + ", tog " + wrong_passwords.length + " forsøg og blev løst på " + (t1-t0) + " millisekunder"
                 console.log("The password is: " + guess)
                 ctx.beginPath();
                 ctx.fillStyle = "green";
