@@ -1,3 +1,7 @@
+//'graf' åbner som default
+document.getElementById("defaultTab").click();
+
+//Hjemmesideinteraktivitet
 function openCity(evt, cityName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
