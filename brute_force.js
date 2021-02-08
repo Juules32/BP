@@ -1,4 +1,4 @@
-var charSet = "abc" //lovlige tegn til password
+var charSet = "abcde" //lovlige tegn til password
 var ctx = document.getElementById("graph").getContext("2d"); //context til html canvasset
 
 document.getElementById("characters").innerHTML = "Brug kun tegnene "
@@ -80,16 +80,18 @@ function solve_password(password_type) {
         //hvorefter yderste loop starter forfra
         while (true) {
             guess = ""
-            for (let j = 0; j < i; j++) {
-                guess += charSet.charAt(Math.random() * charSet.length).toString()
+            while(true) {
+                guess = ""
+                for (let j = 0; j < i; j++) {
+                    guess += charSet.charAt(Math.random() * charSet.length).toString()
+                }
+                if(wrong_passwords.includes(guess) == false) {
+                    combinations += 1
+                    wrong_passwords.push(guess)
+                    break
+                }
             }
-
-            if(wrong_passwords.includes(guess) == false) {
-                combinations += 1
-                console.log(guess)
-                wrong_passwords.push(guess)
-            }
-
+        
             if(guess == password) {
                 //tiden fra start til slut findes
                 let t1 = Date.now()
